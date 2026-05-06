@@ -7,4 +7,7 @@ node {
     def mvnHome = tool name: 'maven-3', type: 'maven'
     sh "${mvnHome}/bin/mvn package" //using interpolation we use double quotes !!!
   }
+  stage('email notification') {
+    mail bcc: '', body: 'This is a Jenkins alert for an executed job.', cc: '', from: '', replyTo: '', subject: 'Jenkins job exectued', to: 'tite.elfe@wanadoo.fr'
+  }
 }
